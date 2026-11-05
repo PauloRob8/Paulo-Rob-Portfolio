@@ -1,6 +1,7 @@
 import type { Dict } from "@/lib/i18n";
 import { PROJECT_URLS } from "@/lib/site";
 import { Phone, ProjectCard } from "./ProjectCard";
+import w from "../Work.module.css";
 import s from "./Coffee.module.css";
 
 const ITEMS = [
@@ -26,17 +27,16 @@ export function CoffeeCard({ d }: { d: Dict }) {
       stack="flutter"
       tags={["Cubit", "flutter_bloc", { k: "pj.cof.t" }, { k: "pj.cof.ui" }]}
       href={PROJECT_URLS.coffee}
-      cta="pj.gh"
       gh={PROJECT_URLS.coffee}
     >
-      <span className={`${s.state} ${s.st1}`}>
+      <span className={`${s.state} ${s.st1} ${w.float}`}>
         <small>ProductCubit</small>
         <b>
           <span className={s.a}>emit(Loaded)</span>
           <span className={s.b}>select(americano)</span>
         </b>
       </span>
-      <span className={`${s.state} ${s.st2}`}>
+      <span className={`${s.state} ${s.st2} ${w.float}`}>
         <small>CartCubit</small>
         <b>
           <span className={s.a}>items: 1</span>

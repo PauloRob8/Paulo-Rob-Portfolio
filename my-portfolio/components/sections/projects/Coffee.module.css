@@ -238,7 +238,8 @@
   box-shadow: 0 0.6em 1.2em rgba(239, 124, 46, 0.35);
 }
 .name {
-  font: 400 1.2em/1.1 var(--font-abril), "DM Serif Display", Georgia, serif;
+  /* Decorative title inside an aria-hidden mockup: a system serif, no extra font. */
+  font: 700 1.2em/1.1 Georgia, "Times New Roman", serif;
   text-align: center;
   margin-top: 0.3em;
 }
@@ -480,16 +481,7 @@
   color: #2a1a12;
   box-shadow: 0 1em 2em rgba(0, 0, 0, 0.35);
   font-family: var(--f-mono);
-  animation: pjFloat 5s ease-in-out infinite;
-}
-@keyframes pjFloat {
-  0%,
-  100% {
-    translate: 0 0;
-  }
-  50% {
-    translate: 0 -8px;
-  }
+  --float-dur: 5s;
 }
 .state small {
   font-size: 0.75em;
@@ -512,7 +504,7 @@
 .st1 {
   left: 6%;
   top: 16%;
-  animation-delay: -1.5s;
+  --float-delay: -1.5s;
 }
 .st2 {
   right: 5%;

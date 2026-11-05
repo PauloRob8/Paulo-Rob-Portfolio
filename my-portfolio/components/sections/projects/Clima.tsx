@@ -48,7 +48,6 @@ export function ClimaCard({ d }: { d: Dict }) {
       stack="swift"
       tags={["UIKit", "CoreLocation", "OpenWeatherMap API"]}
       href={PROJECT_URLS.clima}
-      cta="pj.gh"
       gh={PROJECT_URLS.clima}
     >
       <Phone screen={s.screen}>

@@ -44,7 +44,7 @@ export function LuxCard({ d }: { d: Dict }) {
           <div className={s.tags}>
             <span className={s.tag}>
               <FlutterIcon className={s.ico} />
-              <T k="v3.made" d={d} />
+              Flutter
             </span>
             <T className={s.tag} k="tag.game" d={d} />
             <span className={s.tag}>EN · PT · ES</span>

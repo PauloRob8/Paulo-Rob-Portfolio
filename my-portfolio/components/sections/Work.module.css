@@ -63,7 +63,11 @@
   gap: 14px;
   pointer-events: none;
 }
-.pj .txt a {
+/* Links, the description and the tags take the pointer back: buttons stay clickable
+   and the copy can be selected. The rest of the card falls through to the cover. */
+.pj .txt a,
+.pj .txt p,
+.pj .tags {
   pointer-events: auto;
 }
 .cover {
@@ -71,10 +75,6 @@
   inset: 0;
   z-index: 1;
   border-radius: inherit;
-}
-.cover:focus-visible {
-  outline: 3px solid var(--pj-acc);
-  outline-offset: 3px;
 }
 .pj .view {
   pointer-events: none;
@@ -228,7 +228,6 @@
   box-shadow: 0 2.4em 3.6em -1em rgba(0, 0, 0, 0.55), inset 0 0 0 0.14em #2a2a33;
   transform: rotate(-4deg) translateY(0.6em);
   transition: transform 0.7s var(--ease);
-  animation: pjFloat 6s ease-in-out infinite;
 }
 .flip .phone {
   transform: rotate(4deg) translateY(0.6em);
@@ -236,6 +235,10 @@
 .pj:hover .phone,
 .pj:focus-within .phone {
   transform: rotate(0) translateY(-0.4em) scale(1.04);
+}
+/* Shared float for the mockups (phones, browser window, Cubit chips). */
+.float {
+  animation: pjFloat var(--float-dur, 6s) ease-in-out var(--float-delay, 0s) infinite;
 }
 @keyframes pjFloat {
   0%,

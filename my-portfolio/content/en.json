@@ -64,7 +64,6 @@
   "tag.game": "Game design",
   "v3.lux.eb": "A two-sided climbing card game",
   "v3.lux": "A two-sided card game where wizards summon combos into a shared circle. Designed for phone, tablet and web, in English, Portuguese and Spanish, built with Flutter.",
-  "v3.made": "Flutter",
   "v3.soon": "Available soon on",
   "pj.clima.eb": "Native iOS weather app",
   "pj.clima.p": "A minimalist weather app built natively with Swift and UIKit. It finds you with CoreLocation, searches any city and shows live conditions from the OpenWeatherMap API, structured with MVC and the delegate pattern.",

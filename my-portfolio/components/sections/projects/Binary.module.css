@@ -20,21 +20,11 @@
   box-shadow: 0 2.4em 3.6em -1em rgba(0, 0, 0, 0.55);
   transform: rotate(-2.5deg);
   transition: transform 0.7s var(--ease);
-  animation: pjFloat 6s ease-in-out infinite;
   font-family: Roboto, var(--f-c-b);
 }
 .card:hover .win,
 .card:focus-within .win {
   transform: rotate(0) translateY(-0.4em) scale(1.03);
-}
-@keyframes pjFloat {
-  0%,
-  100% {
-    translate: 0 0;
-  }
-  50% {
-    translate: 0 -8px;
-  }
 }
 .bar {
   display: flex;
@@ -126,7 +116,7 @@
   color: #888;
 }
 .v {
-  font: 600 1.1em var(--f-mono);
+  font: 700 1.1em var(--f-mono);
   letter-spacing: 0.12em;
   white-space: nowrap;
   overflow: hidden;

@@ -1,6 +1,7 @@
 import type { Dict } from "@/lib/i18n";
 import { PROJECT_URLS } from "@/lib/site";
 import { ProjectCard } from "./ProjectCard";
+import w from "../Work.module.css";
 import s from "./Binary.module.css";
 
 export function BinaryCard({ d }: { d: Dict }) {
@@ -15,12 +16,11 @@ export function BinaryCard({ d }: { d: Dict }) {
       stack="flutter"
       tags={["Flutter Web", { k: "pj.live" }]}
       href={PROJECT_URLS.binWeb}
-      cta="pj.web"
       gh={PROJECT_URLS.binGh}
       web={PROJECT_URLS.binWeb}
     >
       {/* Mockup copy is the app's own UI (Portuguese) and decorative. */}
-      <span className={s.win}>
+      <span className={`${s.win} ${w.float}`}>
         <span className={s.bar}>
           <i />
           <i />

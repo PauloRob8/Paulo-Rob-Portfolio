@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { plain, type Dict, type Key } from "@/lib/i18n";
+import type { Dict, Key } from "@/lib/i18n";
 import { ext } from "@/lib/site";
 import { T } from "../../Rich";
 import { ArrowUpRight, FlutterIcon, GitHubIcon, SwiftIcon } from "../../icons";
@@ -17,10 +17,8 @@ type Props = {
   /** First tag, shown with its icon. */
   stack: "flutter" | "swift";
   tags: Array<string | { k: Key }>;
-  /** The card's primary link (full-card cover). */
+  /** The card's primary link (full-card cover, pointer only). */
   href: string;
-  /** Translated text for the cover link's label, e.g. "View on GitHub". */
-  cta: Key;
   gh: string;
   web?: string;
   children: ReactNode;
@@ -29,11 +27,13 @@ type Props = {
 /**
  * Shared shell for the side-project cards. The card is not a link itself: a cover
  * link sits under the content and the buttons sit above it, so links never nest.
+ * The cover duplicates one of the buttons, so it is a pointer convenience only:
+ * keyboard and screen-reader users reach the same URL through the visible button.
  */
-export function ProjectCard({ d, className, flip, title, eb, desc, stack, tags, href, cta, gh, web, children }: Props) {
+export function ProjectCard({ d, className, flip, title, eb, desc, stack, tags, href, gh, web, children }: Props) {
   return (
     <article className={`${s.big} ${s.pj} ${flip ? s.flip : ""} ${className}`} data-tilt="">
-      <a className={s.cover} href={href} {...ext} aria-label={`${title}: ${plain(d[cta])}`} />
+      <a className={s.cover} href={href} {...ext} tabIndex={-1} aria-hidden="true" />
       <span className={s.view} aria-hidden="true">
         <ArrowUpRight />
       </span>
@@ -44,17 +44,8 @@ export function ProjectCard({ d, className, flip, title, eb, desc, stack, tags, 
           <T as="p" k={desc} d={d} />
           <div className={s.tags}>
             <span className={s.tag}>
-              {stack === "flutter" ? (
-                <>
-                  <FlutterIcon className={s.ico} />
-                  <T k="v3.made" d={d} />
-                </>
-              ) : (
-                <>
-                  <SwiftIcon className={s.ico} />
-                  <span>Swift</span>
-                </>
-              )}
+              {stack === "flutter" ? <FlutterIcon className={s.ico} /> : <SwiftIcon className={s.ico} />}
+              {stack === "flutter" ? "Flutter" : "Swift"}
             </span>
             {tags.map((t) =>
               typeof t === "string" ? (
@@ -92,7 +83,7 @@ export function ProjectCard({ d, className, flip, title, eb, desc, stack, tags, 
 /** Phone frame used by the Clima, CEP Finder and Coffee Shop mockups. */
 export function Phone({ screen, children }: { screen: string; children: ReactNode }) {
   return (
-    <span className={s.phone}>
+    <span className={`${s.phone} ${s.float}`}>
       <span className={`${s.screen} ${screen}`}>
         <span className={s.notch} />
         {children}

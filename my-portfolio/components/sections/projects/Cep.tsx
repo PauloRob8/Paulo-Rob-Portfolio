@@ -14,7 +14,6 @@ export function CepCard({ d }: { d: Dict }) {
       stack="flutter"
       tags={["BLoC", "ViaCEP API", "SharedPreferences"]}
       href={PROJECT_URLS.cep}
-      cta="pj.gh"
       gh={PROJECT_URLS.cep}
     >
       {/* Mockup copy is the app's own UI (Portuguese) and decorative. */}

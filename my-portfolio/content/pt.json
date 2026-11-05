@@ -64,7 +64,6 @@
   "tag.game": "Game design",
   "v3.lux.eb": "Um jogo de cartas de dois lados",
   "v3.lux": "Um jogo de cartas de dois lados em que magos invocam combinações num círculo compartilhado. Pensado para celular, tablet e web, em inglês, português e espanhol, feito em Flutter.",
-  "v3.made": "Flutter",
   "v3.soon": "Em breve no",
   "pj.clima.eb": "App de clima nativo para iOS",
   "pj.clima.p": "Um app de clima minimalista feito de forma nativa com Swift e UIKit. Encontra sua localização com CoreLocation, pesquisa qualquer cidade e mostra as condições em tempo real pela API do OpenWeatherMap, estruturado com MVC e o padrão delegate.",
