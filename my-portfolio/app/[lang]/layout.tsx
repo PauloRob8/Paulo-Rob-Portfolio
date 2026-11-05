@@ -78,7 +78,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
       alternateLocale: [ogLocale(other)],
     },
     twitter: {
-      card: "summary_large_image",
+      card: "summary",
       title: x["seo.title"],
       description: x["seo.desc"],
     },
