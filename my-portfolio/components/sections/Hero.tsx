@@ -26,7 +26,7 @@ export function Hero({ d }: { d: Dict }) {
           </span>
         </h1>
         <T as="p" className={s.role} k="hl.full" d={d} />
-        <T as="p" className={s.tag} k="v3.hero" d={d} />
+        <T as="p" className={s.tag} k="v3.hero" d={d} data-chars="" />
         <T as="p" className={s.intro} k="v2.c.intro" d={d} />
         <div className={s.row}>
           <a className="mag hot" href={MAILTO} data-mag="" data-t="">

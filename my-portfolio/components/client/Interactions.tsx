@@ -2,6 +2,10 @@
 
 import { useEffect, useLayoutEffect } from "react";
 import { finePointer, flags, reducedMotion } from "./flags";
+import { dropInLetters, swapHeadlines } from "./letterSwap";
+
+/** Latest language-switch run; older runs must not touch body.swap. */
+let swapRun = 0;
 
 declare global {
   interface Window {
@@ -96,17 +100,26 @@ export function Interactions({ lang }: { lang: string }) {
     return () => io.disconnect();
   }, []);
 
-  // Language crossfade once the new text is in the DOM.
-  useEffect(() => {
+  // Language switch, before the new text paints (layout effect, so it never flashes
+  // in full first): headlines drop in letter by letter, the rest of the copy crossfades.
+  // `flags.swap` is consumed here, which is what stops a Strict Mode re-run (or any
+  // second run) from animating twice.
+  useLayoutEffect(() => {
     if (!flags.swap) return;
     flags.swap = false;
     if (reducedMotion()) return;
+    dropInLetters(swapHeadlines());
+    const run = ++swapRun;
     const b = document.body;
     b.classList.remove("swap");
     void b.offsetWidth;
     b.classList.add("swap");
-    const t = window.setTimeout(() => b.classList.remove("swap"), 500);
-    return () => clearTimeout(t);
+    // Drop the class when the crossfades end. A newer switch owns the class, so an
+    // older run never cuts its animation short.
+    const fades = document.getAnimations().filter((a) => a instanceof CSSAnimation && a.animationName === "txt");
+    void Promise.allSettled(fades.map((a) => a.finished)).then(() => {
+      if (run === swapRun) b.classList.remove("swap");
+    });
   }, [lang]);
 
   return null;
