@@ -16,7 +16,7 @@ export const LINKEDIN = {
   handle: "paulo-roberto-b19594185",
 };
 export const GITHUB = { url: "https://github.com/PauloRob8", handle: "PauloRob8" };
-export const LUX_URL = "https://claude.ai/artifact/EJCTQLCSmLFesAKN2HCdTQ";
+export const LUX_URL = "https://play.google.com/apps/testing/com.paulo.dev.luxtenebre";
 
 /** Side-project links (Projects section). */
 export const PROJECT_URLS = {
