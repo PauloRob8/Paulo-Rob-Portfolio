@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Sans, JetBrains_Mono, Josefin_Sans, Unbounded } from "next/font/google";
 import { notFound } from "next/navigation";
+import { Analytics } from "@vercel/analytics/next";
 import { InlineScript } from "@/components/client/InlineScript";
 import { getExtra, hasLocale, htmlLang, LOCALES, ogLocale } from "@/lib/i18n";
 import { GITHUB, NAME, SITE_URL } from "@/lib/site";
@@ -101,7 +102,10 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
       <head>
         <InlineScript html={BOOT} />
       </head>
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
