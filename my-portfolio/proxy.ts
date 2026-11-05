@@ -20,6 +20,9 @@ function pickLocale(req: NextRequest) {
 }
 
 export function proxy(req: NextRequest) {
+  // Only page visits get the language redirect. Beacons (e.g. Vercel Analytics posting
+  // to its per-project /<unique-path>/view) must reach their endpoint untouched.
+  if (req.method !== "GET" && req.method !== "HEAD") return;
   const { pathname } = req.nextUrl;
   if (LOCALES.some((l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`))) return;
 
@@ -32,8 +35,8 @@ export function proxy(req: NextRequest) {
 }
 
 export const config = {
-  // Skip Next internals, locale paths, metadata routes and any file with an extension.
+  // Skip Next and Vercel internals, locale paths, metadata routes and any file with an extension.
   matcher: [
-    "/((?!_next/|en(?:/|$)|pt(?:/|$)|icon|apple-icon|opengraph-image|twitter-image|sitemap|robots|manifest|.*\\.[^/]+$).*)",
+    "/((?!_next/|_vercel/|en(?:/|$)|pt(?:/|$)|icon|apple-icon|opengraph-image|twitter-image|sitemap|robots|manifest|.*\\.[^/]+$).*)",
   ],
 };
