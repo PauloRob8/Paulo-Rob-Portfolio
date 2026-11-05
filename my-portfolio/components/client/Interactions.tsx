@@ -85,6 +85,17 @@ export function Interactions({ lang }: { lang: string }) {
     return () => offs.forEach((f) => f());
   }, []);
 
+  // Project art animates only while on screen. Reduced motion: CSS shows a still frame.
+  useEffect(() => {
+    if (reducedMotion()) return;
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((en) => en.target.toggleAttribute("data-play", en.isIntersecting)),
+      { threshold: 0.15 },
+    );
+    document.querySelectorAll("[data-stage]").forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   // Language crossfade once the new text is in the DOM.
   useEffect(() => {
     if (!flags.swap) return;

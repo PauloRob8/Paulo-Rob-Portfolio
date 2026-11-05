@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, DM_Sans, JetBrains_Mono, Unbounded } from "next/font/google";
+import { Abril_Fatface, DM_Sans, JetBrains_Mono, Josefin_Sans, Unbounded } from "next/font/google";
 import { notFound } from "next/navigation";
 import { InlineScript } from "@/components/client/InlineScript";
 import { getExtra, hasLocale, htmlLang, LOCALES, ogLocale } from "@/lib/i18n";
@@ -8,9 +8,11 @@ import "../globals.css";
 
 const unbounded = Unbounded({ subsets: ["latin"], variable: "--font-unbounded", display: "swap" });
 const dmSans = DM_Sans({ subsets: ["latin"], axes: ["opsz"], variable: "--font-dm-sans", display: "swap" });
-// Only used for the EN/PT toggle and the Lux card numerals, so not preloaded.
+// Only used for the EN/PT toggle and the project mockups, so not preloaded.
 const mono = JetBrains_Mono({ subsets: ["latin"], weight: "500", variable: "--font-mono", display: "swap", preload: false });
-const bricolage = Bricolage_Grotesque({ subsets: ["latin"], weight: "600", variable: "--font-bricolage", display: "swap", preload: false });
+// Projects section only: Lux Tenebre card type, and the Coffee Shop mockup title.
+const josefin = Josefin_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-josefin", display: "swap", preload: false });
+const abril = Abril_Fatface({ subsets: ["latin"], weight: "400", variable: "--font-abril", display: "swap", preload: false });
 
 /**
  * Runs before first paint: applies the saved / OS theme (no flash), and flags JS so
@@ -94,7 +96,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   return (
     <html
       lang={htmlLang(lang)}
-      className={`${unbounded.variable} ${dmSans.variable} ${mono.variable} ${bricolage.variable}`}
+      className={`${unbounded.variable} ${dmSans.variable} ${mono.variable} ${josefin.variable} ${abril.variable}`}
       suppressHydrationWarning
     >
       <head>

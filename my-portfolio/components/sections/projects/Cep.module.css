@@ -1,0 +1,254 @@
+/* CEP Finder: a CEP types in, the address pops up, it is favourited, counter 25 → 26. */
+.card {
+  --pj-bg: #1d1640;
+  --pj-fg: #f1eeff;
+  --pj-mute: #c3bbea;
+  --pj-line: #3e3470;
+  --pj-acc: #8c7bff;
+  --pj-acc2: #ff8fb1;
+  --pj-on: #140e33;
+  --pj-shadow: rgba(29, 22, 64, 0.7);
+  --pj-stage: radial-gradient(120% 100% at 70% 0%, #3b2d86 0%, #1d1640 70%);
+}
+.screen {
+  background: #fff;
+  color: #1f1b33;
+  font-family: var(--f-c-b);
+  display: flex;
+  flex-direction: column;
+  padding: 2.8em 1em 0.8em;
+  gap: 0.75em;
+}
+.hi {
+  font-size: 1.15em;
+  line-height: 1.15;
+  color: #5d5876;
+}
+.hi b {
+  display: block;
+  font-size: 1.35em;
+  color: #1f1b33;
+}
+.search {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  height: 2.6em;
+  padding: 0 0.8em;
+  border-radius: 0.9em;
+  background: #f2f0ff;
+  border: 0.1em solid #e2ddff;
+  font-weight: 700; /* ref 600 renders as DM Sans 700 */
+  font-size: 1em;
+  color: #3a2f8f;
+}
+.mag {
+  width: 0.95em;
+  height: 0.95em;
+  border: 0.17em solid #6c5ce7;
+  border-radius: 50%;
+  position: relative;
+  flex: none;
+}
+.mag::after {
+  content: "";
+  position: absolute;
+  right: -0.42em;
+  bottom: -0.42em;
+  width: 0.42em;
+  height: 0.17em;
+  background: #6c5ce7;
+  transform: rotate(45deg);
+}
+.q {
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: cpType 8s steps(9) infinite;
+}
+.caret {
+  width: 0.1em;
+  height: 1.2em;
+  background: #6c5ce7;
+  animation: cpBlink 1s steps(1) infinite;
+}
+@keyframes cpType {
+  0% {
+    max-width: 0;
+  }
+  30%,
+  100% {
+    max-width: 7em;
+  }
+}
+@keyframes cpBlink {
+  50% {
+    opacity: 0;
+  }
+}
+.result {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0.75em 0.9em;
+  border-radius: 0.9em;
+  background: #fff;
+  box-shadow: 0 0.5em 1.4em rgba(108, 92, 231, 0.18);
+  border: 0.1em solid #eeeafe;
+  animation: cpPop 8s var(--ease) infinite;
+}
+.result b {
+  font-size: 1em;
+}
+.result small {
+  font-size: 0.85em;
+  color: #6f6a88;
+}
+.heart {
+  position: absolute;
+  right: 0.9em;
+  top: 50%;
+  width: 0.8em;
+  height: 0.8em;
+  background: #ff5c8a;
+  transform: translateY(-50%) rotate(45deg);
+  animation: cpHeart 8s infinite;
+}
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 50%;
+  background: inherit;
+}
+.heart::before {
+  left: -0.4em;
+}
+.heart::after {
+  top: -0.4em;
+}
+@keyframes cpPop {
+  0%,
+  32% {
+    opacity: 0;
+    transform: translateY(0.8em) scale(0.96);
+  }
+  40%,
+  92% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes cpHeart {
+  0%,
+  55% {
+    transform: translateY(-50%) rotate(45deg) scale(0.6);
+    opacity: 0.3;
+  }
+  62% {
+    transform: translateY(-50%) rotate(45deg) scale(1.25);
+    opacity: 1;
+  }
+  70%,
+  100% {
+    transform: translateY(-50%) rotate(45deg) scale(1);
+    opacity: 1;
+  }
+}
+/* Integer custom property so the counter can animate 25 → 26 (still frame: 26). */
+@property --cpn {
+  syntax: "<integer>";
+  initial-value: 26;
+  inherits: false;
+}
+.ring {
+  align-self: center;
+  margin-top: 0.3em;
+  width: 9.5em;
+  height: 9.5em;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 40%, #8c7bff, #6c5ce7 70%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 0.5em #efecff, 0 1em 2em rgba(108, 92, 231, 0.35);
+  animation: cpPulse 8s ease-in-out infinite;
+}
+.n {
+  font: 800 2.8em/1 var(--f-c-d);
+  counter-reset: cpn var(--cpn);
+  animation: cpCount 8s var(--ease) infinite;
+}
+.n::after {
+  content: counter(cpn);
+}
+.ring small {
+  font-size: 0.8em;
+  opacity: 0.85;
+  margin-top: 0.3em;
+}
+@keyframes cpCount {
+  0%,
+  40% {
+    --cpn: 25;
+  }
+  48%,
+  100% {
+    --cpn: 26;
+  }
+}
+@keyframes cpPulse {
+  0%,
+  42%,
+  60%,
+  100% {
+    transform: scale(1);
+  }
+  48% {
+    transform: scale(1.06);
+  }
+}
+.saved {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: auto;
+  padding: 0.6em 0.8em;
+  border-radius: 0.8em;
+  background: #f6f5fb;
+  font-size: 0.9em;
+  color: #4b4568;
+}
+.saved i {
+  width: 1.1em;
+  height: 1.1em;
+  border-radius: 0.3em;
+  background: #6c5ce7;
+  opacity: 0.25;
+}
+.saved b {
+  margin-left: auto;
+  color: #6c5ce7;
+}
+.nav {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 0.5em;
+  border-top: 0.08em solid #eee;
+}
+.nav i {
+  width: 1.3em;
+  height: 1.3em;
+  border-radius: 0.35em;
+  background: #d9d6e6;
+}
+.nav i.on {
+  background: #6c5ce7;
+}

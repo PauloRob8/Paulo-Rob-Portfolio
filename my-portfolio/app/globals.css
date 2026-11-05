@@ -16,7 +16,6 @@
   --f-c-d: var(--font-unbounded), ui-sans-serif, system-ui, sans-serif;
   --f-c-b: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
   --f-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
-  --f-card: var(--font-bricolage), serif;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   color-scheme: light;
 }

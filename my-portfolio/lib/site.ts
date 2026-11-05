@@ -18,6 +18,15 @@ export const LINKEDIN = {
 export const GITHUB = { url: "https://github.com/PauloRob8", handle: "PauloRob8" };
 export const LUX_URL = "https://claude.ai/artifact/EJCTQLCSmLFesAKN2HCdTQ";
 
+/** Side-project links (Projects section). */
+export const PROJECT_URLS = {
+  clima: "https://github.com/PauloRob8/clima-app",
+  cep: "https://github.com/PauloRob8/CEP_FINDER",
+  binWeb: "https://ready-cream.surge.sh/#/",
+  binGh: "https://github.com/PauloRob8/Binary-Calculator",
+  coffee: "https://github.com/PauloRob8/Coffe-Shop-App",
+} as const;
+
 export const URLS = {
   ifood: "https://www.ifood.com.br/",
   veloe: "https://veloe.com.br/",

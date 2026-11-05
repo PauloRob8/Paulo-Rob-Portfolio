@@ -9,8 +9,8 @@ import { Experience } from "@/components/sections/Experience";
 import { Footer } from "@/components/sections/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { Work } from "@/components/sections/Work";
-import { getDict, getExtra, hasLocale, htmlLang, plain } from "@/lib/i18n";
-import { COMPANIES, EMAIL, GITHUB, LINKEDIN, LUX_URL, NAME, SITE_URL } from "@/lib/site";
+import { getDict, getExtra, hasLocale, htmlLang, plain, type Key } from "@/lib/i18n";
+import { COMPANIES, EMAIL, GITHUB, LINKEDIN, LUX_URL, NAME, PROJECT_URLS, SITE_URL } from "@/lib/site";
 
 export default async function Page({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
@@ -74,12 +74,19 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
         inLanguage: htmlLang(lang),
         isPartOf: { "@id": `${SITE_URL}/#website` },
         mainEntity: { "@id": `${SITE_URL}/#person` },
-        hasPart: {
+        hasPart: ([
+          { name: "Lux Tenebre", url: LUX_URL, k: "v3.lux" },
+          { name: "Clima", url: PROJECT_URLS.clima, k: "pj.clima.p" },
+          { name: "CEP Finder", url: PROJECT_URLS.cep, k: "pj.cep.p" },
+          { name: "Binary Calculator", url: PROJECT_URLS.binWeb, k: "pj.bin.p" },
+          { name: "Coffee Shop", url: PROJECT_URLS.coffee, k: "pj.cof.p" },
+        ] satisfies Array<{ name: string; url: string; k: Key }>).map((p) => ({
           "@type": "CreativeWork",
-          name: "Lux Tenebre",
-          url: LUX_URL,
-          description: plain(d["lux.short"]),
-        },
+          name: p.name,
+          url: p.url,
+          description: plain(d[p.k]),
+          creator: { "@id": `${SITE_URL}/#person` },
+        })),
       },
     ],
   };

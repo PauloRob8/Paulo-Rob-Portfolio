@@ -1,0 +1,325 @@
+/* Lux Tenebre card, ported from the game's design. Palette is fixed in both themes. */
+.card {
+  background: #1f1b2e;
+  color: #f4ead2;
+  box-shadow: 0 30px 60px -30px rgba(31, 27, 46, 0.7);
+}
+.view {
+  background: #e0664a;
+  color: #fff;
+}
+.txt {
+  font-family: var(--font-josefin), var(--f-c-b);
+  gap: 16px;
+}
+.eb {
+  font: 600 12px/1.4 var(--font-josefin), sans-serif;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #e2b84a;
+  padding-right: 64px;
+}
+/* In the reference `.C .bigcard h2` outranks `.lt-title`, so the title renders in
+   Unbounded (white, tight tracking) and only keeps the uppercase transform. */
+.title {
+  font: 800 clamp(34px, 5vw, 64px) / 0.95 var(--f-c-d);
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  margin: 0;
+  color: #fff;
+}
+.txt p {
+  color: #d8cdb4;
+  font-family: var(--font-josefin), sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px 6px;
+  border: 2px solid #5a5070;
+  border-radius: 999px;
+  font: 600 12.5px/1 var(--font-josefin), sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #f4ead2;
+  transition: border-color 0.3s, transform 0.35s var(--ease);
+}
+.tag .ico {
+  width: 14px;
+  height: 17px;
+  margin-top: -2px;
+}
+.card:hover .tag {
+  border-color: #7a6e94;
+}
+.play {
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px 10px 14px;
+  border-radius: 14px;
+  background: rgba(244, 234, 210, 0.06);
+  border: 1.5px solid #5a5070;
+  transition: background 0.3s, border-color 0.3s, transform 0.4s var(--ease);
+}
+.play .ico {
+  width: 28px;
+  height: 28px;
+}
+.play span {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+.play small {
+  font: 500 11px var(--font-josefin), sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #d8cdb4;
+}
+.play b {
+  font: 700 19px var(--font-josefin), sans-serif;
+  letter-spacing: 0.02em;
+  color: #f4ead2;
+}
+.card:hover .play {
+  background: rgba(226, 184, 74, 0.12);
+  border-color: #e2b84a;
+  transform: translateY(-2px);
+}
+
+/* ---- Art: starfield, glow, spinning ring, three two-sided cards ---- */
+.stage {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  max-width: 100%;
+  min-height: 340px;
+  height: 340px;
+  background: radial-gradient(120% 90% at 50% 110%, #3d3160 0%, #1f1b2e 58%, #16121f 100%);
+  font-size: clamp(8px, 2.3vw, 12px);
+}
+.stars {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(1px 1px at 12% 20%, #fff8, transparent),
+    radial-gradient(1px 1px at 82% 16%, #fff7, transparent),
+    radial-gradient(1.5px 1.5px at 66% 34%, #fff6, transparent),
+    radial-gradient(1px 1px at 28% 70%, #fff5, transparent),
+    radial-gradient(1px 1px at 90% 80%, #fff6, transparent);
+  animation: tw 4s ease-in-out infinite alternate;
+}
+.glow {
+  position: absolute;
+  left: 50%;
+  top: 56%;
+  width: 50%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(226, 184, 74, 0.3), transparent 65%);
+  filter: blur(4px);
+}
+.ring {
+  position: absolute;
+  left: 50%;
+  top: 56%;
+  width: 62%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1.5px dashed rgba(226, 184, 74, 0.55);
+  animation: spin 40s linear infinite;
+}
+.ring::after {
+  content: "";
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  border: 1px solid rgba(233, 196, 106, 0.25);
+}
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes tw {
+  to {
+    opacity: 0.4;
+  }
+}
+
+.lc {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: 15em;
+  height: 23.75em;
+  margin: -11.875em 0 0 -7.5em;
+  box-sizing: border-box;
+  background: #f4ead2;
+  border: 0.25em solid #2b2320;
+  border-radius: 1.375em;
+  padding: 0.5625em;
+  color: #2b2320;
+  font-family: var(--font-josefin), sans-serif;
+  box-shadow: 0 1.4em 2.4em rgba(0, 0, 0, 0.5);
+  transition: transform 0.7s var(--ease);
+}
+.lcIn {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border: 0.1875em solid #2b2320;
+  border-radius: 0.8125em;
+  overflow: hidden;
+  background: #f4ead2;
+}
+.half {
+  position: relative;
+  display: block;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.half img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.flip {
+  transform: rotate(180deg);
+}
+.tab {
+  position: absolute;
+  top: -0.158em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.1875em;
+  width: 3.58em;
+  height: 1.895em;
+  box-sizing: border-box;
+  background: #f4ead2;
+  border: 0.158em solid #2b2320;
+  border-top: 0;
+  border-radius: 0 0 1.79em 1.79em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.1em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+.c1 {
+  position: absolute;
+  top: 0.25em;
+  left: 0.25em;
+  font-size: 1.5em;
+  min-width: 1.917em;
+  height: 1.917em;
+  padding: 0.17em 0.29em 0;
+  box-sizing: border-box;
+  background: #e2b84a;
+  border: 0.125em solid #2b2320;
+  border-radius: 0.5em;
+  box-shadow: 0 0.125em 0 #2b2320;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  line-height: 1;
+}
+.c2 {
+  position: absolute;
+  top: 0.333em;
+  right: 0.333em;
+  font-size: 1.125em;
+  min-width: 2em;
+  height: 2em;
+  padding: 0.17em 0.33em 0;
+  box-sizing: border-box;
+  background: #f4ead2;
+  border: 0.139em solid #2b2320;
+  border-radius: 0.556em;
+  box-shadow: 0 0.111em 0 #2b2320;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  line-height: 1;
+  color: #5b4c44;
+}
+.mid {
+  position: relative;
+  display: block;
+  flex: none;
+  height: 0.5em;
+  background: #f4ead2;
+  border-top: 0.1875em solid #2b2320;
+  border-bottom: 0.1875em solid #2b2320;
+}
+.mid i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0.75em;
+  height: 0.75em;
+  box-sizing: border-box;
+  background: #e0664a;
+  border: 0.156em solid #2b2320;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.l1 {
+  transform: rotate(-10deg) translate(-62%, 7%) scale(0.92);
+}
+.l2 {
+  transform: translateY(-3%) scale(1.04);
+  z-index: 2;
+  animation: ltFloat 5s ease-in-out infinite;
+}
+.l3 {
+  transform: rotate(10deg) translate(62%, 7%) scale(0.92);
+}
+.card:hover .l1,
+.card:focus-visible .l1 {
+  transform: rotate(-17deg) translate(-88%, 9%) scale(0.92);
+}
+.card:hover .l2,
+.card:focus-visible .l2 {
+  transform: translateY(-9%) scale(1.1);
+}
+.card:hover .l3,
+.card:focus-visible .l3 {
+  transform: rotate(17deg) translate(88%, 9%) scale(0.92);
+}
+@keyframes ltFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -6px;
+  }
+}
+
+@media (min-width: 900px) {
+  .stage {
+    min-height: 260px;
+    height: 100%;
+    font-size: clamp(10px, 1vw, 14px);
+  }
+}

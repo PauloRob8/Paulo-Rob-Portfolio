@@ -1,0 +1,226 @@
+/* Binary Calculator: browser window, 1011 + 0110 = 10001 (17). */
+.card {
+  --pj-bg: #0f2a1a;
+  --pj-fg: #eefaf0;
+  --pj-mute: #b5d6bc;
+  --pj-line: #2c5139;
+  --pj-acc: #5cc466;
+  --pj-acc2: #2e7d32;
+  --pj-on: #06200c;
+  --pj-shadow: rgba(15, 42, 26, 0.7);
+  --pj-stage: radial-gradient(120% 100% at 30% 0%, #1f5233 0%, #0f2a1a 70%);
+}
+.win {
+  display: block;
+  width: min(30em, 88%);
+  border-radius: 1em;
+  overflow: hidden;
+  background: #fafafa;
+  color: #222;
+  box-shadow: 0 2.4em 3.6em -1em rgba(0, 0, 0, 0.55);
+  transform: rotate(-2.5deg);
+  transition: transform 0.7s var(--ease);
+  animation: pjFloat 6s ease-in-out infinite;
+  font-family: Roboto, var(--f-c-b);
+}
+.card:hover .win,
+.card:focus-within .win {
+  transform: rotate(0) translateY(-0.4em) scale(1.03);
+}
+@keyframes pjFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -8px;
+  }
+}
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.6em 0.8em;
+  background: #e9ece9;
+}
+.bar i {
+  width: 0.7em;
+  height: 0.7em;
+  border-radius: 50%;
+  background: #ff6058;
+}
+.bar i:nth-child(2) {
+  background: #ffbd2e;
+}
+.bar i:nth-child(3) {
+  background: #28c940;
+}
+.bar span {
+  margin-left: 0.8em;
+  flex: 1;
+  font-size: 0.8em;
+  color: #5b6660;
+  background: #fff;
+  border-radius: 0.4em;
+  padding: 0.25em 0.7em;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1em;
+}
+.appbar {
+  align-self: stretch;
+  background: #4caf50;
+  color: #fff;
+  text-align: center;
+  font: 700 1.05em/1 var(--f-mono);
+  padding: 0.85em;
+  box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.18);
+}
+.calc {
+  position: relative;
+  width: 2.6em;
+  height: 3.1em;
+  margin-top: 1em;
+  border-radius: 0.4em;
+  background: #4caf50;
+}
+.calc::before {
+  content: "";
+  position: absolute;
+  left: 0.4em;
+  right: 0.4em;
+  top: 0.4em;
+  height: 0.7em;
+  background: #fff;
+  border-radius: 0.15em;
+}
+.calc::after {
+  content: "";
+  position: absolute;
+  left: 0.45em;
+  top: 1.4em;
+  width: 0.36em;
+  height: 0.36em;
+  border-radius: 0.08em;
+  background: #fff;
+  box-shadow: 0.62em 0 #fff, 1.24em 0 #fff, 0 0.6em #fff, 0.62em 0.6em #fff, 1.24em 0.6em #fff;
+}
+.hint {
+  font-size: 0.8em;
+  font-weight: 700;
+  margin: 0.7em 0 0.5em;
+}
+.input {
+  align-self: stretch;
+  margin: 0 1.4em 0.55em;
+  border-bottom: 0.1em solid #b9b9b9;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0.2em;
+}
+.input small {
+  font-size: 0.65em;
+  color: #888;
+}
+.v {
+  font: 600 1.1em var(--f-mono);
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+  overflow: hidden;
+  width: max-content;
+  max-width: 6em;
+}
+.v1 {
+  animation: bnType1 9s steps(4) infinite;
+}
+.v2 {
+  animation: bnType2 9s steps(4) infinite;
+}
+@keyframes bnType1 {
+  0% {
+    max-width: 0;
+  }
+  12%,
+  100% {
+    max-width: 6em;
+  }
+}
+@keyframes bnType2 {
+  0%,
+  14% {
+    max-width: 0;
+  }
+  26%,
+  100% {
+    max-width: 6em;
+  }
+}
+.ops {
+  display: flex;
+  gap: 1.4em;
+  font: 700 1.25em var(--f-mono);
+  margin: 0.3em 0 0.6em;
+}
+.ops i {
+  font-style: normal;
+  width: 1.5em;
+  height: 1.5em;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+.ops i.on {
+  animation: bnTap 9s infinite;
+}
+@keyframes bnTap {
+  0%,
+  30% {
+    background: transparent;
+    color: inherit;
+  }
+  34%,
+  90% {
+    background: #4caf50;
+    color: #fff;
+  }
+  100% {
+    background: transparent;
+    color: inherit;
+  }
+}
+.res {
+  align-self: stretch;
+  margin: 0 1.4em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+  font-size: 0.85em;
+}
+.res b {
+  font-family: var(--f-mono);
+  color: #2e7d32;
+  letter-spacing: 0.06em;
+  display: inline-block;
+  animation: bnRes 9s var(--ease) infinite;
+}
+.res span:nth-child(2) b {
+  animation-delay: 0.25s;
+}
+@keyframes bnRes {
+  0%,
+  36% {
+    opacity: 0;
+    transform: translateY(0.4em);
+  }
+  42%,
+  92% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+  }
+}
