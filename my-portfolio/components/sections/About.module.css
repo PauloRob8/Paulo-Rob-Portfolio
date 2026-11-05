@@ -1,0 +1,73 @@
+/* .C .about / .C3 .chips3 / .C .skl */
+.about {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1fr;
+}
+.about p {
+  font-size: 18px;
+  margin: 0 0 16px;
+  max-width: 58ch;
+}
+
+.about .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.about .chips span {
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--c-card);
+}
+
+.about .skl {
+  display: grid;
+  gap: 10px;
+}
+.about .skl > div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--c-card);
+  border-radius: 16px;
+  padding: 14px 16px;
+  transition: transform 0.35s var(--ease), background 0.3s;
+}
+.about .skl > div:hover {
+  transform: translateX(8px);
+  background: var(--c-hover);
+}
+.about .skl i {
+  font: 800 15px var(--f-c-d);
+  font-style: normal;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--c-bg);
+  display: grid;
+  place-items: center;
+  color: var(--c-hot);
+  flex: none;
+}
+.about .skl b {
+  display: block;
+  font-size: 17px;
+}
+.about .skl span {
+  font-size: 14px;
+  color: var(--c-mute);
+}
+
+@media (hover: none) {
+  .about .skl > div:hover {
+    transform: none;
+  }
+}
+@media (min-width: 900px) {
+  .about {
+    grid-template-columns: 1.1fr 1fr;
+  }
+}

@@ -1,0 +1,121 @@
+/* .C3 .contact3 */
+.contact .giant {
+  font: 800 clamp(34px, 9vw, 96px) / 1 var(--f-c-d);
+  letter-spacing: -0.05em;
+  margin: 0 0 12px;
+  text-wrap: balance;
+}
+.contact .cp {
+  font-size: 17px;
+  max-width: 52ch;
+  margin: 0 0 28px;
+}
+.contact .em {
+  display: inline-block;
+  font: 800 clamp(19px, 5.6vw, 52px) / 1.1 var(--f-c-d);
+  letter-spacing: -0.03em;
+  color: var(--c-hot);
+  text-decoration: none;
+  word-break: break-all;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 3px no-repeat;
+  /* 44px tap target without changing layout: padding offset by negative margin,
+     underline kept on the text box */
+  padding-block: 11px;
+  margin-block: -11px;
+  background-origin: content-box;
+  background-clip: content-box;
+  transition: background-size 0.5s var(--ease);
+  -webkit-user-select: all;
+  user-select: all;
+}
+.contact .em:hover {
+  background-size: 100% 3px;
+}
+
+.contact .ctabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0 36px;
+}
+.contact .ctabs :global(.mag) {
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 12px;
+}
+
+.contact .socials {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+}
+.contact .socials a {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  background: var(--c-card);
+  border-radius: 18px;
+  padding: 16px;
+  text-decoration: none;
+  font: 700 20px var(--f-c-d);
+  letter-spacing: -0.02em;
+  transition: background 0.3s, color 0.3s, transform 0.35s var(--ease);
+}
+.contact .socials a small {
+  display: block;
+  font: 500 13px var(--f-c-b);
+  color: var(--c-mute);
+  letter-spacing: 0;
+}
+.contact .socials a:hover {
+  background: var(--c-ink);
+  color: var(--c-inv);
+  transform: translateY(-4px);
+}
+.contact .socials a:hover small {
+  color: var(--c-inv);
+  opacity: 0.75;
+}
+.contact .socials .st {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.contact .socials .si {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--c-bg);
+  color: var(--c-ink);
+  display: grid;
+  place-items: center;
+  flex: none;
+  transition: background 0.3s, color 0.3s, transform 0.45s var(--ease);
+}
+.contact .socials .si svg {
+  display: block;
+  width: 26px;
+  height: 26px;
+}
+.contact .socials a:hover .si {
+  background: var(--c-hot);
+  color: #1b0d06;
+  transform: rotate(-8deg) scale(1.06);
+}
+.contact .socials .arr {
+  transition: transform 0.35s var(--ease);
+}
+.contact .socials a:hover .arr {
+  transform: translate(3px, -3px);
+}
+
+@media (min-width: 600px) {
+  .contact .ctabs {
+    display: flex;
+  }
+  .contact .socials {
+    grid-template-columns: 1fr 1fr;
+  }
+}

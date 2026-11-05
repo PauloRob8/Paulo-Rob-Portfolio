@@ -1,26 +1,248 @@
-@import "tailwindcss";
-
+/* ============ C3 · Showcase: tokens ============ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --c-bg: #efedf8;
+  --c-ink: #18142b;
+  --c-mute: #5d5876;
+  --c-card: #ffffff;
+  --c-line: #d9d4ee;
+  --c-hot: #ff6a3d;
+  --c-violet: #2b1d5c;
+  --c-gold: #e9c46a;
+  --c-inv: #ffffff;
+  --c-hover: #fff8f4;
+  --c-hover2: #ffe6dc;
+  --c-on-hot: #1b0d06;
+
+  --f-c-d: var(--font-unbounded), ui-sans-serif, system-ui, sans-serif;
+  --f-c-b: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --f-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --f-card: var(--font-bricolage), serif;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root[data-mode="dark"] {
+  --c-bg: #110e1c;
+  --c-ink: #f0ecfa;
+  --c-mute: #aaa4c5;
+  --c-card: #1c1830;
+  --c-line: #322c4d;
+  --c-violet: #2d1f61;
+  --c-hot: #ff7a4f;
+  --c-inv: #110e1c;
+  --c-hover: #262040;
+  --c-hover2: #30233a;
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ============ base ============ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font-family: var(--f-c-b);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  padding-bottom: 110px;
+  overflow-x: clip;
+  transition: background-color 0.45s, color 0.45s;
+}
+a {
+  color: inherit;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+}
+:focus-visible {
+  outline: 2px solid #5cc8f7;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.skip {
+  position: fixed;
+  left: 12px;
+  top: 12px;
+  z-index: 70;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--c-ink);
+  color: var(--c-inv);
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-160%);
+  transition: transform 0.25s var(--ease);
+}
+.skip:focus-visible {
+  transform: none;
+}
+
+/* ============ magnetic buttons (.C / .C2 / .C3 .mag) ============ */
+.mag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 999px;
+  background: var(--c-ink);
+  color: var(--c-inv);
+  text-decoration: none;
+  font: 700 15px var(--f-c-b); /* ref declares 600 but only loads 400/500/700, so it renders 700 */
+  border: 0;
+  transition: transform 0.25s var(--ease), background 0.25s;
+}
+.mag:hover {
+  background: var(--c-hot);
+  color: var(--c-on-hot);
+}
+.mag.hot {
+  background: var(--c-hot);
+  color: var(--c-on-hot);
+}
+.mag.hot:hover {
+  background: var(--c-ink);
+  color: var(--c-inv);
+}
+.mag.out {
+  background: transparent;
+  color: var(--c-ink);
+  border: 1.5px solid var(--c-ink);
+}
+.mag.out:hover {
+  background: var(--c-ink);
+  color: var(--c-inv);
+}
+.mag .ico {
+  display: block;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  transition: transform 0.4s var(--ease);
+}
+.mag:hover .ico {
+  transform: rotate(-10deg) scale(1.1);
+}
+
+/* ============ section shell + section labels (.C3 .s3, .s3>.lbl) ============ */
+.s3 {
+  padding-top: 64px;
+  scroll-margin-top: 112px;
+}
+.s3 > .lbl {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+  row-gap: 4px;
+  margin: 0 0 22px;
+  font: 800 clamp(28px, 4vw, 44px) / 1 var(--f-c-d);
+  letter-spacing: -0.04em;
+  text-transform: none;
+}
+.s3 > .lbl > span {
+  color: var(--c-mute);
+}
+.s3 > .lbl > span:first-child {
+  color: var(--c-ink);
+}
+.s3 > .lbl > span + span {
+  font: 600 13px var(--f-c-d);
+  letter-spacing: 0.02em;
+}
+@media (min-width: 600px) {
+  .s3 {
+    padding-top: 80px;
+    scroll-margin-top: 80px;
+  }
+}
+@media (min-width: 900px) {
+  .s3 {
+    padding-top: 96px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ============ scroll reveal ============ */
+/* Hidden state only exists when JS is running (html.js is set by the head script). */
+.rv {
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.js .rv:not(.in) {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+/* ============ language crossfade ============ */
+body.swap [data-t] {
+  animation: txt 0.45s var(--ease);
+}
+@keyframes txt {
+  from {
+    opacity: 0.15;
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    filter: none;
+  }
+}
+
+/* ============ theme circular reveal ============ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* ============ reduced motion: everything off ============ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  .js .rv:not(.in) {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+main:focus {
+  outline: none;
 }

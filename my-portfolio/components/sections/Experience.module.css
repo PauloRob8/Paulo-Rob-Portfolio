@@ -1,0 +1,73 @@
+/* .C .tl + .C3 .tl3 */
+.tl {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+.tl > li {
+  background: var(--c-card);
+  border-radius: 18px;
+  padding: 18px;
+  display: grid;
+  gap: 6px 24px;
+  grid-template-columns: 1fr;
+}
+.tl > li.sm {
+  padding: 16px 22px;
+}
+.tl .d {
+  font: 600 14px var(--f-c-d);
+  color: var(--c-hot);
+}
+.tl h3 {
+  margin: 0;
+  font: 700 17px / 1.35 var(--f-c-b);
+}
+.tl > li.sm h3 {
+  font-size: 16px;
+}
+.tl h3 a {
+  text-decoration: none;
+}
+.tl h3 a:hover {
+  color: var(--c-hot);
+}
+.tl .at {
+  display: block;
+  color: var(--c-mute);
+  font-size: 15px;
+  margin-top: 4px;
+}
+.tl .at a,
+.tl p a {
+  color: var(--c-hot);
+  font-weight: 700;
+  text-decoration: none;
+}
+.tl p {
+  margin: 6px 0 0;
+  color: var(--c-mute);
+  max-width: 64ch;
+}
+.tl ul {
+  margin: 10px 0 0;
+  padding-left: 16px;
+  color: var(--c-mute);
+  font-size: 15px;
+}
+.tl ul li {
+  margin-bottom: 6px;
+  max-width: 68ch;
+}
+
+@media (min-width: 760px) {
+  .tl > li {
+    grid-template-columns: 200px 1fr;
+    padding: 22px;
+  }
+  .tl > li.sm {
+    padding: 16px 22px;
+  }
+}

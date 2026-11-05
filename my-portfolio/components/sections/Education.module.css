@@ -1,0 +1,28 @@
+/* .C .facts3 + .C3 overrides */
+.facts {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+  margin: 24px 0 8px;
+}
+.facts > div {
+  background: var(--c-card);
+  border-radius: 18px;
+  padding: 18px;
+}
+.facts b {
+  display: block;
+  font: 700 17px var(--f-c-b);
+  letter-spacing: 0;
+  margin-bottom: 4px;
+}
+.facts span {
+  font-size: 14px;
+  color: var(--c-mute);
+}
+
+@media (min-width: 600px) {
+  .facts {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}

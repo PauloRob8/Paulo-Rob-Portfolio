@@ -1,0 +1,17 @@
+/* .C footer + .C3 overrides */
+.foot {
+  margin-top: 48px;
+  padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--c-mute);
+  font-size: 14px;
+}
+@media (min-width: 600px) {
+  .foot {
+    flex-direction: row;
+  }
+}

@@ -1,0 +1,139 @@
+/* .C3 .logos: ink band with slanted edges */
+.logos {
+  margin-top: 44px;
+  background: var(--c-ink);
+  color: var(--c-bg);
+  clip-path: polygon(0 28px, 100% 0, 100% calc(100% - 28px), 0 100%);
+  padding-block: 64px;
+  transition: background 0.45s, color 0.45s;
+}
+.logos .inner {
+  text-align: center;
+}
+.logos .eb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 600 12px var(--f-c-d);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-hot);
+}
+.logos .eb::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: currentColor;
+  border-radius: 2px;
+}
+.logos h2 {
+  font: 800 clamp(26px, 3.8vw, 42px) / 1.08 var(--f-c-d);
+  letter-spacing: -0.035em;
+  margin: 12px auto 28px;
+  max-width: 22ch;
+  text-wrap: balance;
+  color: var(--c-bg);
+}
+
+.logos .lg {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-width: 1040px;
+}
+.logos .lg > li {
+  flex: 0 1 calc(50% - 5px);
+  min-width: 0;
+}
+.logos .lg a {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 100px;
+  padding: 16px 10px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: var(--c-bg);
+  border: 1px solid color-mix(in srgb, var(--c-bg) 18%, transparent);
+  transition: background 0.3s, transform 0.35s var(--ease), border-color 0.3s;
+}
+.logos .lg small {
+  font: 500 12.5px var(--f-c-b);
+  opacity: 0.68;
+}
+.logos .lg .ext {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 14px;
+  color: var(--c-hot);
+  opacity: 0;
+  transform: translate(-4px, 4px);
+  transition: opacity 0.3s, transform 0.35s var(--ease);
+}
+.logos .lg a:hover,
+.logos .lg a:focus-visible {
+  background: color-mix(in srgb, var(--c-bg) 8%, transparent);
+  border-color: var(--c-hot);
+  transform: translateY(-4px);
+}
+.logos .lg a:hover .ext,
+.logos .lg a:focus-visible .ext {
+  opacity: 1;
+  transform: none;
+}
+
+/* the logo itself: a single-colour CSS mask that takes the band's text colour */
+.logos .mark {
+  display: block;
+  width: min(var(--w), 100%);
+  aspect-ratio: var(--ar);
+  background: currentColor;
+  -webkit-mask: var(--src) center / contain no-repeat;
+  mask: var(--src) center / contain no-repeat;
+  opacity: 0.9;
+  transition: background-color 0.3s, opacity 0.3s, transform 0.4s var(--ease);
+}
+.logos .lg a:hover .mark,
+.logos .lg a:focus-visible .mark {
+  background: var(--c-hot);
+  opacity: 1;
+  transform: scale(1.06);
+}
+.logos .lg:hover > li:not(:hover) .mark {
+  opacity: 0.45;
+}
+@media (hover: none) {
+  .logos .lg:hover > li:not(:hover) .mark {
+    opacity: 0.9;
+  }
+}
+
+@media (min-width: 600px) {
+  .logos {
+    clip-path: polygon(0 48px, 100% 0, 100% calc(100% - 48px), 0 100%);
+    padding-block: 88px;
+  }
+  .logos .lg > li {
+    flex-basis: calc(33.333% - 7px);
+  }
+}
+@media (min-width: 760px) {
+  .logos .lg {
+    max-width: 900px;
+  }
+}
+@media (min-width: 900px) {
+  .logos {
+    clip-path: polygon(0 9%, 100% 0, 100% 91%, 0 100%);
+    padding-block: 104px;
+  }
+}
