@@ -10,7 +10,7 @@ import { Footer } from "@/components/sections/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { Work } from "@/components/sections/Work";
 import { getDict, getExtra, hasLocale, htmlLang, plain, type Key } from "@/lib/i18n";
-import { COMPANIES, EMAIL, GITHUB, LINKEDIN, LUX_URL, NAME, PROJECT_URLS, SITE_URL } from "@/lib/site";
+import { COMPANIES, CONTENT_UPDATED, EMAIL, GITHUB, LINKEDIN, LUX_URL, NAME, PROJECT_URLS, SITE_URL } from "@/lib/site";
 
 export default async function Page({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
@@ -72,6 +72,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
         url,
         name: x["seo.title"],
         inLanguage: htmlLang(lang),
+        dateModified: CONTENT_UPDATED,
         isPartOf: { "@id": `${SITE_URL}/#website` },
         mainEntity: { "@id": `${SITE_URL}/#person` },
         hasPart: ([

@@ -8,10 +8,10 @@ export const EXTRA = {
     sections: "Sections",
     language: "Language",
     skip: "Skip to content",
-    "seo.title": "Paulo Roberto — Senior Mobile Engineer · Flutter",
+    "seo.title": "Paulo Roberto — Senior Flutter Developer · Mobile Engineer",
     "seo.desc":
-      "Senior Mobile Engineer with 7 years of Flutter. I build iOS and Android apps for payments, retail and fintech, from first sketch to the stores. Available now.",
-    "seo.ogAlt": "Paulo Roberto, Senior Mobile Engineer · Flutter",
+      "Senior Flutter developer with 7 years building iOS and Android apps for payments, retail and fintech, from first sketch to the stores. Available now.",
+    "seo.ogAlt": "Paulo Roberto, Senior Flutter Developer · Mobile Engineer",
   },
   pt: {
     toast: "E-mail copiado",
@@ -21,10 +21,10 @@ export const EXTRA = {
     sections: "Seções",
     language: "Idioma",
     skip: "Pular para o conteúdo",
-    "seo.title": "Paulo Roberto — Engenheiro Mobile Sênior · Flutter",
+    "seo.title": "Paulo Roberto — Desenvolvedor Flutter Sênior · Engenheiro Mobile",
     "seo.desc":
-      "Engenheiro Mobile Sênior com 7 anos de Flutter. Crio apps iOS e Android para pagamentos, varejo e fintech, do primeiro rascunho até as lojas. Disponível agora.",
-    "seo.ogAlt": "Paulo Roberto, Engenheiro Mobile Sênior · Flutter",
+      "Desenvolvedor Flutter Sênior com 7 anos criando apps iOS e Android para pagamentos, varejo e fintech, do primeiro rascunho até as lojas. Disponível agora.",
+    "seo.ogAlt": "Paulo Roberto, Desenvolvedor Flutter Sênior · Engenheiro Mobile",
   },
 } as const;
 

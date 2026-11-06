@@ -5,7 +5,13 @@ const fromEnv =
     : "");
 
 /** Absolute production origin, no trailing slash. */
-export const SITE_URL = (fromEnv || "https://paulorob.dev").replace(/\/+$/, "");
+export const SITE_URL = (fromEnv || "https://pauloaragaodev.com").replace(/\/+$/, "");
+
+/**
+ * Last real content change (sitemap lastmod, ProfilePage dateModified).
+ * Bump it by hand when page content changes — not on every deploy, or Google stops trusting it.
+ */
+export const CONTENT_UPDATED = "2026-11-06";
 
 export const NAME = "Paulo Roberto";
 export const EMAIL = "paulo.rob159@gmail.com";
